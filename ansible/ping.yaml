@@ -1,9 +1,18 @@
 ---
 # équivalent de la commande ad-hoc: ansible -m ping slave1
 - name: Playbook ping
-  hosts: slave1
+  hosts: slaves
+  gather_facts: no
 
   tasks:
-  - name: toto
+  - name: ping 1
     ping: {}
+  
+  - name: ping 2
+    ping: data=pang
+  
+  - name: ping 3
+    ping:
+      data: pung
+
 ...

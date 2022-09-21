@@ -1,0 +1,17 @@
+---
+- name: Example 1
+  hosts: slave1
+
+  tasks:
+  - name: Copy 1
+    copy:
+      src: files/hello.txt
+      dest: /tmp/hello.txt
+
+  - name: Copy 2
+    copy:
+      src: files/README.md
+      #dest: /home/osboxes
+      dest: /home/{{ ansible_user }}
+      mode: 0400
+...

@@ -1,8 +1,20 @@
 1. donnez les commandes ad-hoc permettant de:
 a. créer le sous-dossier log dans le dossier /tmp
+=> ansible -m file -a "name=/tmp/log state=directory" slave1
+
 b. créer un fichier log1.txt dans /tmp/log
+=> ansible -m file -a 'path=/tmp/log/log1.txt state=touch' slave1
+
 c. mettre le fichier /tmp/log/log1.txt en mode 755
+=> ansible -m file -a 'name=/tmp/log/log1.txt mode=0755' slave1
+
 d. écrire "coucou" dans le fichier /tmp/log/log1.txt
+=> ansible -m lineinfile -a 'name=/tmp/log/log1.txt line=coucou' slave1
+
 e. supprimer le fichier /tmp/log/log1.txt
+=> ansible -m file -a 'path=/tmp/log/log1.txt state=absent' slave1
+
 f. supprimer le dossier /tmp/log
+=> ansible -m file -a 'path=/tmp/log state=absent' slave1
+
 n.b: pas de playbook ! Juste les commandes ansible
