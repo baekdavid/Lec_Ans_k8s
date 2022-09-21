@@ -1,0 +1,7 @@
+1. donnez les commandes ad-hoc permettant de:
+a. créer le sous-dossier log dans le dossier /tmp
+b. créer un fichier log1.txt dans /tmp/log
+c. mettre le fichier /tmp/log/log1.txt en mode 755
+d. écrire "coucou" dans le fichier /tmp/log/log1.txt
+e. supprimer le fichier /tmp/log/log1.txt
+f. supprimer le dossier /tmp/log

@@ -1,7 +1,7 @@
 ---
-# équivalent de: ansible -m ping slave1
+# équivalent de la commande ad-hoc: ansible -m ping slave1
 - name: Playbook ping
-  hosts: all
+  hosts: slave1
 
   tasks:
   - name: toto
