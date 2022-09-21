@@ -5,3 +5,4 @@ c. mettre le fichier /tmp/log/log1.txt en mode 755
 d. écrire "coucou" dans le fichier /tmp/log/log1.txt
 e. supprimer le fichier /tmp/log/log1.txt
 f. supprimer le dossier /tmp/log
+n.b: pas de playbook ! Juste les commandes ansible
