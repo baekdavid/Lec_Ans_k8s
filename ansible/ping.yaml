@@ -1,0 +1,9 @@
+---
+# équivalent de: ansible -m ping slave1
+- name: Playbook ping
+  hosts: all
+
+  tasks:
+  - name: toto
+    ping: {}
+...
