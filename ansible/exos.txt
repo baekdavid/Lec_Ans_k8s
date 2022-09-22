@@ -17,6 +17,6 @@ Cette tâche ne sera executée que sur le host slave1
 
 3. playbook exo3.yaml
 créer un playbook qui
-- installe nodejs
-- git clone le dépôt suivant: https://gitlab.com/cdufour1/nodeapp.git dans /tmp
+- installe le package nodejs
+- git clone (voir module git) le dépôt suivant: https://gitlab.com/cdufour1/nodeapp.git dans /tmp/nodeapp
 - copie le fichier script.js dans le home directory d'osboxes
