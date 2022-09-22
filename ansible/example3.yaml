@@ -1,0 +1,33 @@
+---
+- name: Example 3
+  hosts: slave1
+  gather_facts: yes
+
+  tasks:
+  - debug:
+      msg: coucou {{ 2+2 }}
+
+  - name: print default gateway ip
+    debug:
+      msg: "{{ ansible_default_ipv4.gateway }}"
+
+  # tâche conditionnelle. Executée si la cible tourne sur Centos
+  - file:
+      path: /home/{{ansible_user}}/file
+      state: touch
+    when: ansible_distribution == 'Centos' # évaluatiion booléenne. Renvoie true ou false
+
+  # tâche capturée (enregistrée)
+  - ping: {} # renvoie pong par défaut
+    register: ping_output # variable de capture
+
+  - debug:
+      msg: "{{ ping_output.ping }}"
+
+  - file:
+      path: /home/{{ansible_user}}/{{ping_output.ping}} # /home/osboxes/pong
+      state: directory
+    when: ping_output.ping == 'pong'
+
+
+...
