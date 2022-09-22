@@ -14,3 +14,9 @@ créer un playbook qui:
 - remplace (voir module replace) la chaîne "[father]" par le hostname de la
 machine. Etat du fichier secret.txt après remplacement: Ton père est slave1.
 Cette tâche ne sera executée que sur le host slave1
+
+3. playbook exo3.yaml
+créer un playbook qui
+- installe nodejs
+- git clone le dépôt suivant: https://gitlab.com/cdufour1/nodeapp.git dans /tmp
+- copie le fichier script.js dans le home directory d'osboxes

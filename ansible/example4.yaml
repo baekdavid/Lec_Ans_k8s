@@ -1,0 +1,20 @@
+---
+- name: Example 4
+  hosts: all
+  gather_facts: yes
+  become: yes # devient root pour l'ensemble des tâches
+
+  tasks:
+  - name: install apache server
+    apt:
+      state: present
+      name: apache2
+      update_cache: yes
+    when: ansible_distribution == 'Ubuntu'
+
+  - name: start service apache
+    service:
+      state: started
+      name: apache2
+
+...
