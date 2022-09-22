@@ -1,0 +1,41 @@
+---
+- name: Example 2
+  hosts: slave1
+  gather_facts: yes
+
+  vars:
+    file_path: /tmp/hello.txt
+
+  tasks:
+
+  # modifie les permissions d'un fichier existant
+  - name: File 1 - change permissions on {{ file_path }}
+    file:
+      path: "{{ file_path }}"
+      mode: 0777
+      state: file # cibler un chemin existant
+
+  # modifie le timestamp d'un fichier ou création si fichier inexistant
+  - name: File 2 - update timestamp or create file
+    file:
+      path: /tmp/helloo.txt
+      mode: 0777
+      state: touch
+
+  - name: File 3 - create /tmp/folder
+    file: path=/tmp/folder state=directory mode=0755
+
+  - name: File 4 - create symlink to hello file
+    file:
+      state: link
+      src: "{{ file_path }}"
+      path: /home/{{ansible_user}}/link_to_hello
+
+  - name: File 5 - delete file /tmp/helloo.txt
+    file: path=/tmp/helloo.txt state=absent
+
+  - name: File 6 - delete folder /tmp/folder
+    file:
+      state: absent
+      path: /tmp/folder
+...
