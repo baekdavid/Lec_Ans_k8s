@@ -13,4 +13,4 @@ créer un playbook qui:
 - copie dans ce dossier un fichier "secret.txt"
 - remplace (voir module replace) la chaîne "[father]" par le hostname de la
 machine. Etat du fichier secret.txt après remplacement: Ton père est slave1.
-Cette tâche ne sera executée sur sur le host slave1
+Cette tâche ne sera executée que sur le host slave1
