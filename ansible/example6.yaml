@@ -1,0 +1,23 @@
+---
+- name: Example 6
+  hosts: slave1
+  gather_facts: yes
+
+  vars:
+    apache_dir: /var/www/html
+    title: Formation Ansible
+
+
+  tasks:
+  - name: change owner of {{ apache_dir }}
+    file:
+      path: "{{ apache_dir }}"
+      owner: "{{ ansible_user }}"
+    become: yes
+
+  - name: copy facts.html file to {{ apache_dir }} after template processing
+    template:
+      src: templates/facts.html.j2
+      dest: "{{ apache_dir }}/facts.html"
+
+...

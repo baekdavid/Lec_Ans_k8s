@@ -1,0 +1,28 @@
+---
+- name: Example 5
+  hosts: slave1
+  become: yes
+
+  vars:
+    user_group: musketeers
+    members:
+    - { name: aramis, group: sudo }
+    - { name: athos, group: musketeers }
+    - { name: porthos, group: musketeers }
+
+
+  tasks:
+  - name: create group {{ user_group }}
+    group:
+      name: "{{ user_group }}"
+      state: present
+
+  - name: create users
+    user:
+      name: "{{ item.name }}"
+      group: "{{ item.group }}"
+      password: "{{ 'toto' | password_hash('sha512') }}"
+      shell: /bin/bash
+    loop: "{{ members }}"
+
+...
