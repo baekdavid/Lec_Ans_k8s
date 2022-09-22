@@ -1,0 +1,27 @@
+---
+- name: Exo 2
+  hosts: all
+  gather_facts: yes
+
+  vars:
+    private_dir: /home/{{ansible_user}}/private
+
+  tasks:
+  - name: create private dir
+    file:
+      state: directory
+      path: "{{ private_dir }}"
+
+  - name: copy secret file to {{ private_dir }}
+    copy:
+      src: files/secret.txt
+      dest: "{{ private_dir }}"
+
+  - name: replace [father] in secret file
+    replace:
+      path: "{{ private_dir }}/secret.txt"
+      regexp: '\[father\]'
+      replace: "{{ inventory_hostname }}"
+    when: inventory_hostname == 'slave1'
+
+...
