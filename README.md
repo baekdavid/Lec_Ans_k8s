@@ -14,3 +14,10 @@
 sudo apt install -y ansible
 sudo apt install -y sshpass
 ```
+
+### Liens utiles
+- [Ansible Vault - Introduction](https://youtu.be/L8GzW4sopug)
+
+### Tutos (playlists) youtube conseillés
+- [Learn Linux TV - en](https://youtu.be/3RiVKs8GHYQ)
+- [xavki - fr](https://youtu.be/Cisg9bLhLkk)

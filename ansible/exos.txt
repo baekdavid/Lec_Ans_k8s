@@ -16,7 +16,26 @@ machine. Etat du fichier secret.txt après remplacement: Ton père est slave1.
 Cette tâche ne sera executée que sur le host slave1
 
 3. playbook exo3.yaml
-créer un playbook qui
+créer un playbook qui:
 - installe le package nodejs
 - git clone (voir module git) le dépôt suivant: https://gitlab.com/cdufour1/nodeapp.git dans /tmp/nodeapp
 - copie le fichier script.js dans le home directory d'osboxes
+
+
+========================================
+4. playbook exo4.yaml
+créer un playbook qui
+- installe la package tree
+- crée un groupe dev
+- crée un utilisateur dev1 appartenant aux groupes dev + sudo, mot de passe: dev1
+- crée un sous-dossier dev1 dans le dossier /var/www/html
+- copie le template user.html.j2 dans le dossier /var/ww/html/dev1. Renommer le fichier user.html
+	définir dans le playbook une variable "prof" afin d'alimenter le template
+- crée un lien symbolique /home/osboxes/web_dev1 pointant vers /var/www/html/dev1
+- fait une requête http sur http://localhost/user.html par le module ansible.builtin.uri
+- affiche le retour de la requête (content), grâce au module debug, dans le terminal de la master
+
+N.B: Ce playbook, à réaliser en individuel, me servira d'évaluation. 
+Veuillez me l'envoyer par email à l'adresse suivante: opusidea@gmail.com avant le 28/09/2022. 
+Préciser vos nom et prénom dans l'email. Merci.
+========================================
