@@ -1,0 +1,27 @@
+---
+- name: Clean
+  hosts: all
+  become: yes
+
+  vars:
+    user_group: musketeers
+    members:
+    - { name: aramis, group: sudo }
+    - { name: athos, group: musketeers }
+    - { name: porthos, group: musketeers }
+
+  tasks:
+  - file: path=/tmp/hello.txt state=absent
+  - file: path=/home/{{ ansible_user }}/README.md state=absent
+  - file: path=/tmp/helloo.txt state=absent
+  - file: path=/tmp/folder state=absent
+  - file: path=/home/{{ansible_user}}/link_to_hello state=absent
+  - file: path=/home/{{ansible_user}}/file state=absent
+  - file: path=/home/osboxes/pong state=absent
+  - apt: name=apache2 state=absent
+  - user: name={{ item.name }} state=absent
+    loop: "{{ members }}"
+  - group: name={{ user_group }} state=absent
+
+
+...
