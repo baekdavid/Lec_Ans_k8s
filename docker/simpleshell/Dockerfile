@@ -15,5 +15,6 @@ COPY app.sh .
 # rend le fichier exécutable
 RUN chmod +x app.sh
 
+# commande de démarrage
 CMD ["/bin/bash", "app.sh"]
 
