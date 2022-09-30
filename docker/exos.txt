@@ -1,6 +1,6 @@
 1. Démarrer un conteneur apache joignable sur le port 5000 du host
 => docker run -d -p 5000:80 httpd
 
-2. Créer un script shell (exo2_start.sh) produisant 2 conteneurs redis dans deux version différentes 
-ainsi que 2 conteneurs mysql dans version différentes (attention, variable d'env MYSQL_ROOT_PASSWORD, -e)
+2. Créer un script shell (exo2_start.sh) produisant 2 conteneurs redis dans deux versions différentes 
+ainsi que 2 conteneurs mysql dans versions différentes (attention, variable d'env MYSQL_ROOT_PASSWORD, -e)
 Créer le script arrêtant et supprimant ces conteneurs (exo2_destroy.sh)
