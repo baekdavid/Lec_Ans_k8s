@@ -21,3 +21,6 @@ sudo apt install -y sshpass
 ### Tutos (playlists) youtube conseillés
 - [Learn Linux TV - en](https://youtu.be/3RiVKs8GHYQ)
 - [xavki - fr](https://youtu.be/Cisg9bLhLkk)
+
+### Autres
+- [Démo SSH - by Christophe](https://opusidea-training.s3.eu-west-3.amazonaws.com/divers/demo/2022-10-03-demo-ssh.webm)
