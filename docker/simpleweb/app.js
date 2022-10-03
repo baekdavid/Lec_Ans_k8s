@@ -15,8 +15,9 @@ obtenir le nombre de visites
 */
 app.get('/visit', (req, res) => {
     // connexion au serveur redis via un client
+    // connecxtion par résolution dns ("redis" => ip ?)
     const rediscli = redis.createClient({
-        host: 'localhost',
+        host: 'redis',
         port: 6379
     });
 
