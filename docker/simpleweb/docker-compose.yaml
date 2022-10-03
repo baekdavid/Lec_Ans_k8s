@@ -6,8 +6,11 @@ services:
     image: redis:5.0-alpine
 
   simpleweb:
-    image: capge/simpleweb:1.0.1
+    #image: capge/simpleweb:1.0.2
+    build: .
+    image: capge/simpleweb
     ports:
     - 3000:3000
     depends_on:
     - redis
+    restart: always

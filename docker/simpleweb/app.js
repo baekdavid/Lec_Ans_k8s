@@ -40,6 +40,14 @@ app.get('/visit', (req, res) => {
 
 })
 
+app.get('/help', (req, res) => {
+    res.send("aiutoooooooooooooo !");
+})
+
+app.get('/crash', (req, res) => {
+    process.exit(1); // le processus serveur s'arrête en retournant 1 (erreur)
+})
+
 app.listen(port, () => {
     console.log('Server running on port: ' + port)
 }); // serveur http écoutant le port choisi
