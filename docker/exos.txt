@@ -4,3 +4,8 @@
 2. Créer un script shell (exo2_start.sh) produisant 2 conteneurs redis dans deux versions différentes 
 ainsi que 2 conteneurs mysql dans deux versions différentes (attention, variable d'env MYSQL_ROOT_PASSWORD, -e)
 Créer le script arrêtant et supprimant ces conteneurs (exo2_destroy.sh)
+
+3. Ajouter une nouvelle route à l'application server (app.js)
+    endpoint: /help
+    une requête en GET sur cette route renverra la chaîne de caractères suivante au client: "aiutoooooooooooooo !"
+    => il faudra construire une nouvelle image et mettre à jour votre infra multi-services

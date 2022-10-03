@@ -1,0 +1,13 @@
+---
+version: "3"
+services:
+
+  redis:
+    image: redis:5.0-alpine
+
+  simpleweb:
+    image: capge/simpleweb:1.0.1
+    ports:
+    - 3000:3000
+    depends_on:
+    - redis
