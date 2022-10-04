@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo
+
+  # pod template
+  template:
+    metadata:
+      labels:
+        app: demo
+    spec:
+      containers:
+      - name: nginx
+        image: docker.io/nginx:1.23
