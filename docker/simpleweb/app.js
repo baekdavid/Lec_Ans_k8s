@@ -3,6 +3,10 @@ const redis = require('redis'); // import du client redis
 const app = express(); // instanciation d'une app express
 const port = 3000;
 
+// middleware
+// fonction exposant le dossier public au client
+app.use(express.static('public'));
+
 // routes (endpoints)
 app.get('/', (req, res) => {
     // callback function

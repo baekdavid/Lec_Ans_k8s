@@ -4,6 +4,8 @@ services:
 
   redis:
     image: redis:5.0-alpine
+    volumes:
+    - redis_data:/data
 
   simpleweb:
     #image: capge/simpleweb:1.0.2
@@ -14,3 +16,8 @@ services:
     depends_on:
     - redis
     restart: always
+    volumes:
+    - "./public:/app/public"
+
+volumes:
+  redis_data: {}
