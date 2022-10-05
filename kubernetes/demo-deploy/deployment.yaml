@@ -5,7 +5,7 @@ metadata:
   name: deploy-nginx
 
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       target: nginx

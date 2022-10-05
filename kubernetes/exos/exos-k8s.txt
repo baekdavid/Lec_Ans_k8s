@@ -1,0 +1,13 @@
+*** k8s exos ***
+
+1. Proposer un déploiement Kubernetes d'une application apache disposant déjà, en plus du fichier index.html standard, des fichiers: page1.html, page2.html et tarsier.jpg.
+Ces fichiers seront situés dans le dossier: /usr/local/apache2/htdocs, à l'intérieur de l'image de l'application.
+Les pages html incluses dans les pods déployés seront accessibles depuis l'extérieur du cluster.
+
+Tester par exemple une requête sur <ip-du-cluster><port-externe-du-service>/page1.html
+
+
+2. Proposer un déploiement Kubernetes de l'application située dans le dossier exo2-hashservice.
+Les endpoints proposés par cette application de type serveur web devront être accessibles depuis l'extérieur de votre cluster.
+
+Tester par exemple une requête sur <ip-du-cluster><port-externe-du-service>/md5/toto
