@@ -6,7 +6,7 @@ metadata:
   namespace: simpleweb
 
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: simpleweb
@@ -17,11 +17,11 @@ spec:
     spec:
       containers:
       - name: simpleweb-container
-        image: opusidea/capge-simpleweb:2.0.0
+        image: opusidea/capge-simpleweb:2.1.0
         resources:
           requests:
             memory: "64Mi"
             cpu: "250m"
           limits:
-            memory: "128Mi"
+            memory: "256Mi"
             cpu: "500m"
