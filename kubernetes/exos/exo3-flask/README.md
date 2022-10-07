@@ -28,7 +28,7 @@ Associer un redimensionnement automatique à l'application web lui permettant de
 - fichier docker-compose.yaml
 - fichier kubernetes (manifeste)
 
-Les livrables devront être placés sur un **dépôt github** dont me communiquez l'url
+Les livrables devront être placés sur un **dépôt github** dont vous me communiquerez l'url
 avant le **vendredi 21 octobre 2022**.
 
 ## Astuces
