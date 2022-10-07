@@ -11,3 +11,5 @@ Tester par exemple une requête sur <ip-du-cluster><port-externe-du-service>/pag
 Les endpoints proposés par cette application de type serveur web devront être accessibles depuis l'extérieur de votre cluster.
 
 Tester par exemple une requête sur <ip-du-cluster><port-externe-du-service>/md5/toto
+
+3. Voir le README file du dossier correspondant
