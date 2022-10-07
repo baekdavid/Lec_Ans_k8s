@@ -21,7 +21,7 @@ Vous devrez:
 - Placer toutes les ressources "namespacables" dans un namespace nommé **exo3**.
 
 ## Tache facultative
-Associer un redimensionnement automatique à l'application web lui permettant de monter jusqu'à 8 pods lorsque l'utilisation moyenne des ressources cpu atteignent 70%.
+Associer un redimensionnement automatique à l'application web lui permettant de monter jusqu'à 8 pods lorsque l'utilisation moyenne des ressources cpu atteint 70%.
 
 ## Livrables et deadline
 - fichier Dockerfile
