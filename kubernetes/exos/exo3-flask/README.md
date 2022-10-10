@@ -8,6 +8,7 @@ Nous utiliserons un serveur de base de données mariadb, version 10.
 Vous devrez:
 - Ecrire le **Dockerfile** permettant de dockeriser l'application flask.
 - Ecrire le **docker-compose.yaml** permettant de démarrer l'application avec deux services: un service web et un service mariadb.
+docker-compose 
 - Publier l'image vers votre compte docker.
 - Ecrire un **manifeste k8s exo3.yaml** permettant de déployer l'application en cluster.
 
@@ -16,7 +17,7 @@ Vous devrez:
 - L'application mariadb ne sera pas sujette à redimensionnement horizontal. Elle donc peut se présenter comme un simple Pod.
 - L'application web et l'application mariadb ne communiqueront qu'en interne au cluster.
 - L'application web sera la seule à pouvoir recevoir des requêtes depuis l'extérieur du cluster.
-- L'application mariadb sera liée à un volume persistant.
+- *L'application mariadb sera liée à un volume persistant.
 - Imposer des limites (valeurs au choix) de ressources pour les différents conteneurs.
 - Placer toutes les ressources "namespacables" dans un namespace nommé **exo3**.
 
