@@ -1,14 +1,20 @@
 ```bash
 ## create Dockerfile in app folder root
-docker build -t your_docker_username/exo3 .
-docker run -d -p 3000:80 your_docker_username/exo3
+docker-compose up -d 
+docker image tag ex03-flask_app:latest baekdavid/flask_app:1.0.1
+
+## test docker image
+docker run -d -p 5000:80 baekdavid/exo3-flask_app:1.0.1
 docker stop $(docker ps -a -q)
+
+## dockerhub push
+docker login
+docker image push baekdavid/exo3-flask_app:1.0.1
 
 ## minikube start
 kubectl create namespace exo3
 kubectl config set-context --current --namespace=exo3
 ## create docker-compose.yml
-kubectl apply -f docker-compose.yaml
 kubectl get deployment -w
 
 ## create manifeste-k8s-exo3.yml
@@ -16,7 +22,7 @@ kubectl apply -f mainfeste-k8s-exo3.yaml
 kubectl get services -w
 http://your_minikube_ip:31000
 minikube ip
-kubectl scale deployment exo3 --replicas=10
+kubectl scale deployment exo3 --replicas=8
 kubectl get deployment -w
 kubectl scale deployment exo3 --replicas=3
 ```
