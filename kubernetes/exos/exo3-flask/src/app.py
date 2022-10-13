@@ -1,11 +1,11 @@
 from flask import Flask, render_template, json
-from flaskext.mysql import MySQL
+from flaskext.MySQL import MySQL
 
-mysql = MySQL()
+MySQL = MySQL()
 app = Flask(__name__)
 app.config.from_pyfile('database.cfg')
 
-mysql.init_app(app)
+MySQL.init_app(app)
 
 @app.route('/')
 def main():
@@ -26,8 +26,8 @@ def showVersion():
 def getStudents():
     version = showVersion()
     try:
-        # connect to mysql
-        connection = mysql.connect()
+        # connect to MySQL
+        connection = MySQL.connect()
         cursor = connection.cursor()
         cursor.execute('''SELECT * FROM students''')
         result = cursor.fetchall()

@@ -14,15 +14,15 @@ docker-compose
 
 ## Tâches obligatoires
 - L'application web (flask) devra être aisément "scalable".
-- L'application mariadb ne sera pas sujette à redimensionnement horizontal. Elle donc peut se présenter comme un simple Pod.
-- L'application web et l'application mariadb ne communiqueront qu'en interne au cluster.
-- L'application web sera la seule à pouvoir recevoir des requêtes depuis l'extérieur du cluster.
+- *L'application mariadb ne sera pas sujette à redimensionnement horizontal. Elle donc peut se présenter comme un simple Pod.
+-*L'application web et l'application mariadb ne communiqueront qu'en interne au cluster.
+- *L'application web sera la seule à pouvoir recevoir des requêtes depuis l'extérieur du cluster.
 - *L'application mariadb sera liée à un volume persistant.
-- Imposer des limites (valeurs au choix) de ressources pour les différents conteneurs.
-- Placer toutes les ressources "namespacables" dans un namespace nommé **exo3**.
+- *Imposer des limites (valeurs au choix) de ressources pour les différents conteneurs.
+- *Placer toutes les ressources "namespacables" dans un namespace nommé **exo3**.
 
 ## Tache facultative
-Associer un redimensionnement automatique à l'application web lui permettant de monter jusqu'à 8 pods lorsque l'utilisation moyenne des ressources cpu atteint 70%.
+*Associer un redimensionnement automatique à l'application web lui permettant de monter jusqu'à 8 pods lorsque l'utilisation moyenne des ressources cpu atteint 70%.
 
 ## Livrables et deadline
 - fichier Dockerfile

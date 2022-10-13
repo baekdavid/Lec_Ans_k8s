@@ -1,0 +1,26 @@
+---
+version: "3.7"
+services:
+  app: # ContainerFlask
+    build: 
+      context: ./app
+      dockerfile: Dockerfile
+    links:
+      - "db:mariadb"
+    ports:
+      - "5000:5000"
+    container_name: flask
+    depends_on:
+      - db
+
+  db: # ContainerMariaDB
+    image: mariadb:10.0.21
+    volumes:
+      - ./dbdata:/var/lib/mysql 
+    environment:      
+      MARIADB_ROOT_PASSWORD: jube
+      MARIADB_DATABASE: jube
+    ports:
+      - "3808:3808"
+    container_name: db
+...

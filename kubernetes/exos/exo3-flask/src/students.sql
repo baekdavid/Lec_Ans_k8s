@@ -5,7 +5,7 @@ CREATE TABLE `exo3`.`students` (
       PRIMARY KEY (`id`));
 
 USE exo3;
-INSERT INTO `students` VALUES (1,'Loann');
-INSERT INTO `students` VALUES (2,'Roumeissa');
+INSERT INTO `students` VALUES (1,'David');
+INSERT INTO `students` VALUES (2,'Samuel');
 INSERT INTO `students` VALUES (3,'Bastien');
 GRANT ALL PRIVILEGES ON *.* TO 'delpiero'@'%' IDENTIFIED BY 'juve';
