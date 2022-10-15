@@ -3,7 +3,7 @@
 docker-compose up -d 
 docker image tag ex03-flask_app:latest baekdavid/flask_app:1.0.1
 
-## test docker image
+## tester localement
 docker run -d -p 5000:80 baekdavid/exo3-flask_app:1.0.1
 docker stop $(docker ps -a -q)
 
@@ -14,33 +14,32 @@ docker image push baekdavid/exo3-flask_app:1.0.1
 ## minikube start
 kubectl create namespace exo3
 kubectl config set-context --current --namespace=exo3
-## create docker-compose.yml
-kubectl get deployment -w
-
-## create manifeste-k8s-exo3.yml
+## create manifeste-k8s-exo3.yaml
 kubectl apply -f mainfeste-k8s-exo3.yaml
+kubectl get deployment -w
 kubectl get services -w
 http://your_minikube_ip:31000
 minikube ip
 kubectl scale deployment exo3 --replicas=8
 kubectl get deployment -w
-kubectl scale deployment exo3 --replicas=3
+## autoscaling
+kubectl autoscale deployment flask --cpu-percent=70 --min=1 --max=8
 ```
 
 ## Objectif
 Déployer dans un cluster Kubernetes l'application Flask (python) dont le code source est situé dans le dossier src.  
 Il s'agit d'une application web liée une base de données relationnelle.  
-Nous utiliserons un serveur de base de données mariadb, version 10.  
+Nous utiliserons un serveur de base de données mariadb v10.0.21  
 
 Vous devrez:
-- Ecrire le **Dockerfile** permettant de dockeriser l'application flask.
-- Ecrire le **docker-compose.yaml** permettant de démarrer l'application avec deux services: un service web et un service mariadb.
+- *Ecrire le **Dockerfile** permettant de dockeriser l'application flask.
+- *Ecrire le **docker-compose.yaml** permettant de démarrer l'application avec deux services: un service web et un service mariadb.
 docker-compose 
-- Publier l'image vers votre compte docker.
-- Ecrire un **manifeste k8s exo3.yaml** permettant de déployer l'application en cluster.
+- *Publier l'image vers votre compte docker.
+- *Ecrire un **manifeste k8s exo3.yaml** permettant de déployer l'application en cluster.
 
 ## Tâches obligatoires
-- L'application web (flask) devra être aisément "scalable".
+- *L'application web (flask) devra être aisément "scalable".
 - *L'application mariadb ne sera pas sujette à redimensionnement horizontal. Elle donc peut se présenter comme un simple Pod.
 -*L'application web et l'application mariadb ne communiqueront qu'en interne au cluster.
 - *L'application web sera la seule à pouvoir recevoir des requêtes depuis l'extérieur du cluster.

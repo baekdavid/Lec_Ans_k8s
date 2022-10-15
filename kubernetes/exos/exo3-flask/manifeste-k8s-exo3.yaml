@@ -1,13 +1,38 @@
 ---
 apiVersion: v1
-kind: Pod
+kind: Service
 metadata:
-  namespace: simpleweb
-  name: mariadb-pod
+  name: flask
   labels:
-    app: mariadb
+    app: flask
 spec:
-  replicas: 2
+  ports:
+    - port: 5000
+  selector:
+    app: flask
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: flask-pv-claim
+  labels:
+    app: flask
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask
+  labels:
+    app: flask
+spec:
+  replicas: 8
   selector:
     matchLabels:
       app: flask
@@ -17,42 +42,111 @@ spec:
         app: flask
     spec:
       containers:
-      - name: flask
-        image: baekdavid/exo3:1.0.1
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: "250m"
-          limits:
-            memory: "256Mi"
-            cpu: "700m"  
-      volumeMounts:
-      - name: mariadb-volume
-        mountPath: /var/lib/mysql
+      - image: baekdavid/exo3-flask_app:1.0.1
+        name: flask
+        env:
+        - name: flask_DB_HOST
+          value: flask-mariadb
+        - name: flask_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mariadb-pass
+              key: juve
+        ports:
+        - containerPort: 5000
+          name: flask
+        volumeMounts:
+        - name: flask-persistent-storage
+          mountPath: /var/www/html
       volumes:
-      - name: mariadb-volume
+      - name: flask-persistent-storage
         persistentVolumeClaim:
-          claimName: mariadb-pvc
+          claimName: flask-pv-claim
 
+
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: flask
+spec:
+  maxReplicas: 8
+  minReplicas: 1
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 70
+        type: Utilization
+    type: Resource
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: flask
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: flask-service
+  name: flask-mariadb
+  labels:
+    app: flask
 spec:
-  type: ClusterIP # valeur par défaut
+  ports:
+    - port: 3306
   selector:
     app: flask
-  ports:
-  - port: 5000
-    protocol: TCP
-    targetPort: 5000
-    spec:
-      selector:
-      app: flaskapi
-      type: LoadBalancer
+    tier: mariadb
+  clusterIP: None
 ---
 apiVersion: v1
-kind: Namespace
+kind: PersistentVolumeClaim
 metadata:
-  name: exo3
+  name: mariadb-pv-claim
+  labels:
+    app: flask
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-mariadb
+  labels:
+    app: flask
+spec:
+  selector:
+    matchLabels:
+      app: flask
+      tier: mariadb
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: flask
+        tier: mariadb
+    spec:
+      containers:
+      - name: mariadb
+        image: mariadb:10.0.21
+        env:
+        - name: mariadb_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mariadb-pass
+              key: juve
+        ports:
+        - containerPort: 3306
+          name: mariadb
+        volumeMounts:
+        - name: mariadb-persistent-storage
+          mountPath: /var/lib/mariadb
+      volumes:
+      - name: mariadb-persistent-storage
+        persistentVolumeClaim:
+          claimName: mariadb-pvc
+...
