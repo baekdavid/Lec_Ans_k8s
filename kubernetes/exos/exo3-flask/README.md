@@ -1,7 +1,7 @@
 ```bash
 ## create Dockerfile in app folder root
 docker-compose up -d 
-docker image tag ex03-flask_app:latest baekdavid/flask_app:1.0.1
+docker image tag baekdavid/exo3-flask_app:1.0.1
 
 ## tester localement
 docker run -d -p 5000:80 baekdavid/exo3-flask_app:1.0.1
@@ -12,10 +12,14 @@ docker login
 docker image push baekdavid/exo3-flask_app:1.0.1
 
 ## minikube start
+minikube start --driver=virtualbox --no-vtx-check
 kubectl create namespace exo3
 kubectl config set-context --current --namespace=exo3
 ## create manifeste-k8s-exo3.yaml
-kubectl apply -f mainfeste-k8s-exo3.yaml
+kubectl apply -f manifeste-k8s-exo3.yaml
+kubectl get pvc
+## secret for exo3-flask_app:1.0.1 in hub.docker.io
+kubectl get pod private-reg
 kubectl get deployment -w
 kubectl get services -w
 http://your_minikube_ip:31000
